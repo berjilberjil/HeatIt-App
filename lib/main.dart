@@ -6,13 +6,13 @@ void main() {
   runApp(MyApp());
 }
 
-
 class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
       title: 'Flutter Demo',
       theme: ThemeData(
+        fontFamily: "Poppins",
         scaffoldBackgroundColor: const Color.fromARGB(255, 255, 17, 0),
         primarySwatch: Colors.blue,
       ),

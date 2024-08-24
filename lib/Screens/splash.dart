@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:myapp/Screens/login_screen.dart';
+import 'package:intl_phone_field/phone_number.dart';
+import 'package:myapp/Screens/phone.dart';
 
 class SplashScreen extends StatefulWidget {
   @override
@@ -10,10 +11,10 @@ class _SplashScreenState extends State<SplashScreen> {
   @override
   void initState() {
     super.initState();
-    Future.delayed(Duration(seconds: 5), () {
+    Future.delayed(Duration(seconds: 3), () {
       Navigator.pushReplacement(
         context,
-        MaterialPageRoute(builder: (context) => LoginScreen()),
+        MaterialPageRoute(builder: (context) => PhoneNumberScreen()),
       );
     });
   }
@@ -30,7 +31,9 @@ class _SplashScreenState extends State<SplashScreen> {
               child: Text(
                 "HeatIt",
                 style: Theme.of(context).textTheme.headlineLarge?.copyWith(
-                      fontSize: 25,
+                      fontWeight: FontWeight.w700,
+                      fontStyle: FontStyle.italic,
+                      fontSize: 35,
                       color: Colors.white,
                     ),
               ),
