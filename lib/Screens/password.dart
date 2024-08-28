@@ -107,6 +107,9 @@ class PasswordScreen extends StatelessWidget {
                 controller: passwordController,
                 obscureText: true,
                 decoration: InputDecoration(
+                  labelStyle: const TextStyle(
+                    fontSize: 15,
+                  ),
                   labelText: 'Password',
                   hintText: 'Enter your password',
                   border: OutlineInputBorder(
@@ -130,6 +133,9 @@ class PasswordScreen extends StatelessWidget {
                 controller: confirmPasswordController,
                 obscureText: true,
                 decoration: InputDecoration(
+                  labelStyle: const TextStyle(
+                    fontSize: 15,
+                  ),
                   labelText: 'Confirm Password',
                   hintText: 'Confirm your password',
                   border: OutlineInputBorder(

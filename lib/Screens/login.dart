@@ -1,6 +1,5 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:intl_phone_field/intl_phone_field.dart';
 import 'password.dart';
 
 class LoginScreen extends StatelessWidget {
@@ -102,6 +101,9 @@ class LoginScreen extends StatelessWidget {
               padding: const EdgeInsets.only(left: 35, right: 35),
               child: TextFormField(
                 decoration: InputDecoration(
+                  labelStyle: TextStyle(
+                    fontSize: 15,
+                  ),
                   labelText: 'Name',
                   hintText: 'Enter your Name',
                   border: OutlineInputBorder(
@@ -130,6 +132,9 @@ class LoginScreen extends StatelessWidget {
               padding: const EdgeInsets.only(left: 35, right: 35),
               child: TextFormField(
                 decoration: InputDecoration(
+                  labelStyle: TextStyle(
+                    fontSize: 15,
+                  ),
                   labelText: 'Email',
                   hintText: 'Enter your email',
                   border: OutlineInputBorder(
@@ -245,11 +250,11 @@ class LoginScreen extends StatelessWidget {
                   ),
                   child: const CircleAvatar(
                     backgroundColor: Colors.white,
+                    radius: 20,
                     child: Icon(
                       Icons.more_horiz,
                       color: Color.fromARGB(255, 0, 0, 0),
                     ),
-                    radius: 20,
                   ),
                 ),
               ],

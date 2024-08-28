@@ -1,204 +1,237 @@
-
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/flutter_svg.dart';
+import 'myprofile.dart';
 
 class HomeScreen extends StatelessWidget {
   const HomeScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
-    return  Scaffold(
+    return Scaffold(
       backgroundColor: Colors.white,
       appBar: AppBar(
-        title: const Text('Heat It'),
+        title: const Row(
+          mainAxisAlignment: MainAxisAlignment.center,
+          crossAxisAlignment: CrossAxisAlignment.center,
+          children: [
+            Icon(Icons.location_pin),
+            Text(
+              "Chennai, Dolakpoor",
+              style: TextStyle(fontSize: 18),
+            )
+          ],
+        ),
         actions: [
-          IconButton(
-            icon: const Icon(Icons.search),
-            onPressed: () {
-              // Handle search action
-            },
+          Padding(
+            padding: const EdgeInsets.only(right: 30),
+            child: Container(
+              decoration: BoxDecoration(
+                shape: BoxShape.circle,
+                border: Border.all(
+                  width: 2,
+                  color: Colors.black,
+                ),
+              ),
+              child: InkWell(
+                child: CircleAvatar(
+                  radius: 15,
+                  child: SvgPicture.asset(
+                    "assets/images/profile.svg",
+                    fit: BoxFit.cover,
+                  ),
+                ),
+                onTap: () {
+                  Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                          builder: (context) => const MyprofileScreen()));
+                },
+              ),
+            ),
+          )
+        ],
+      ),
+      drawer: Drawer(
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.start,
+          crossAxisAlignment: CrossAxisAlignment.center,
+          children: [
+            Padding(
+              padding: const EdgeInsets.only(top: 50),
+              child: Container(
+                height: 150,
+                width: 250,
+                child: const Column(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  crossAxisAlignment: CrossAxisAlignment.center,
+                  children: [
+                    CircleAvatar(
+                      radius: 25,
+                      backgroundImage:
+                          AssetImage("assets/images/google-icon.png"),
+                    ),
+                    SizedBox(height: 10),
+                    Text(
+                      "Bordon Jhorn",
+                      style: TextStyle(
+                        color: Colors.black,
+                        fontSize: 20,
+                        fontWeight: FontWeight.bold,
+                      ),
+                    ),
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      crossAxisAlignment: CrossAxisAlignment.center,
+                      children: [
+                        Icon(
+                          Icons.person,
+                          color: Color.fromARGB(162, 0, 87, 98),
+                        ),
+                        Text(
+                          "My Profile",
+                          style: TextStyle(
+                            color: Color.fromARGB(162, 0, 87, 98),
+                            fontSize: 15,
+                            fontWeight: FontWeight.bold,
+                          ),
+                        )
+                      ],
+                    )
+                  ],
+                ),
+              ),
+            ),
+            const SizedBox(height: 20),
+            const Divider(
+              color: Colors.black,
+              thickness: 1,
+            ),
+            Expanded(
+              child: ListView(
+                children: [
+                  ListTile(
+                    title: const Text("Home"),
+                    leading: const Icon(Icons.home),
+                    onTap: () {
+                      Navigator.pop(context);
+                    },
+                  ),
+                  ListTile(
+                    title: const Text("My Orders"),
+                    leading: const Icon(Icons.shopping_cart),
+                    onTap: () {
+                      Navigator.pop(context);
+                    },
+                  ),
+                  ListTile(
+                    title: const Text("My Profile"),
+                    leading: const Icon(Icons.person),
+                    onTap: () {
+                      Navigator.pop(context);
+                    },
+                  ),
+                  ListTile(
+                    title: const Text("Settings"),
+                    leading: const Icon(Icons.settings),
+                    onTap: () {
+                      Navigator.pop(context);
+                    },
+                  ),
+                  ListTile(
+                    title: const Text("Logout"),
+                    leading: const Icon(Icons.logout),
+                    onTap: () {
+                      Navigator.pop(context);
+                    },
+                  ),
+                ],
+              ),
+            )
+          ],
+        ),
+      ),
+      body: Column(
+        mainAxisAlignment: MainAxisAlignment.start,
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          const SizedBox(
+            height: 30,
           ),
+          Padding(
+            padding: const EdgeInsets.only(left: 15, right: 15),
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                const Padding(
+                  padding: EdgeInsets.only(left: 15, right: 15),
+                  child: Column(
+                    mainAxisAlignment: MainAxisAlignment.start,
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Text(
+                        "Good Morning",
+                        style: TextStyle(
+                          fontSize: 15,
+                        ),
+                      ),
+                      Text(
+                        "Borden Jhorn",
+                        style: TextStyle(
+                            fontSize: 20, fontWeight: FontWeight.bold),
+                      )
+                    ],
+                  ),
+                ),
+                ElevatedButton(
+                  onPressed: () {
+                    print("Clicked");
+                  },
+                  style: ElevatedButton.styleFrom(
+                    backgroundColor: Colors.green,
+                  ),
+                  child: const Text(
+                    "Edit Profile",
+                    style: TextStyle(color: Colors.white),
+                  ),
+                )
+              ],
+            ),
+          ),
+          const SizedBox(
+            height: 20,
+          ),
+          Expanded(
+            child: Padding(
+              padding: const EdgeInsets.only(left: 30, right: 30),
+              child: TextField(
+                style: TextStyle(
+                  color: Colors.black,
+                ),
+                decoration: InputDecoration(
+                  
+                  prefixIcon: const Icon(Icons.search),
+                  focusColor: Colors.red,
+                  hintText: "Search for Lunch",
+                  border: OutlineInputBorder(
+                    borderRadius: BorderRadius.circular(15),
+                  ),
+                  focusedBorder: OutlineInputBorder(
+                    
+                      borderRadius: BorderRadius.circular(15)),
+                  enabledBorder: OutlineInputBorder(
+                    borderRadius: BorderRadius.circular(15),
+                  ),
+                  
+                  
+                ),
+              ),
+            ),
+          ),
+          //need to change stuffs
+          
         ],
       ),
     );
   }
 }
-
-// import 'package:flutter/material.dart';
-
-// class HomeScreen extends StatelessWidget {
-//   const HomeScreen({super.key});
-
-//   @override
-//   Widget build(BuildContext context) {
-//     return Scaffold(
-//       backgroundColor: Colors.white,
-//       appBar: AppBar(
-//         title: const Text('Food Ordering App'),
-//         actions: [
-//           IconButton(
-//             icon: const Icon(Icons.search),
-//             onPressed: () {
-//               // Handle search action
-//             },
-//           ),
-//         ],
-//       ),
-//       body: SingleChildScrollView(
-//         child: Padding(
-//           padding: const EdgeInsets.all(16.0),
-//           child: Column(
-//             crossAxisAlignment: CrossAxisAlignment.start,
-//             children: [
-//               // Search Bar
-//               TextField(
-//                 decoration: InputDecoration(
-//                   hintText: 'Search for food...',
-//                   prefixIcon: const Icon(Icons.search),
-//                   border: OutlineInputBorder(
-//                     borderRadius: BorderRadius.circular(8.0),
-//                   ),
-//                 ),
-//               ),
-//               const SizedBox(height: 20),
-//               // Categories
-//               const Text(
-//                 'Categories',
-//                 style: TextStyle(
-//                   fontSize: 18,
-//                   fontWeight: FontWeight.bold,
-//                 ),
-//               ),
-//               const SizedBox(height: 10),
-//               SizedBox(
-//                 height: 100,
-//                 child: ListView(
-//                   scrollDirection: Axis.horizontal,
-//                   children: [
-//                     _buildCategoryItem('Pizza',
-//                         'https://www.foodiesfeed.com/wp-content/uploads/2023/06/burger-with-melted-cheese.jpg'),
-//                     _buildCategoryItem('Burger',
-//                         'https://www.foodiesfeed.com/wp-content/uploads/2023/06/burger-with-melted-cheese.jpg'),
-//                     _buildCategoryItem('Sushi',
-//                         'https://www.foodiesfeed.com/wp-content/uploads/2023/06/burger-with-melted-cheese.jpg'),
-//                     _buildCategoryItem('Dessert',
-//                         'https://www.foodiesfeed.com/wp-content/uploads/2023/06/burger-with-melted-cheese.jpg'),
-//                   ],
-//                 ),
-//               ),
-//               const SizedBox(height: 20),
-//               // Popular Items
-//               const Text(
-//                 'Popular Items',
-//                 style: TextStyle(
-//                   fontSize: 18,
-//                   fontWeight: FontWeight.bold,
-//                 ),
-//               ),
-//               const SizedBox(height: 10),
-//               GridView.builder(
-//                 shrinkWrap: true,
-//                 physics: const NeverScrollableScrollPhysics(),
-//                 gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-//                   crossAxisCount: 2,
-//                   crossAxisSpacing: 10,
-//                   mainAxisSpacing: 10,
-//                   childAspectRatio: 0.8,
-//                 ),
-//                 itemCount: 4,
-//                 itemBuilder: (context, index) {
-//                   return _buildPopularItem(
-//                     'Food Item $index',
-//                     'https://www.foodiesfeed.com/wp-content/uploads/2023/06/burger-with-melted-cheese.jpg',
-//                     '\$${(index + 1) * 5}',
-//                   );
-//                 },
-//               ),
-//             ],
-//           ),
-//         ),
-//       ),
-//       bottomNavigationBar: BottomNavigationBar(
-//         items: const [
-//           BottomNavigationBarItem(
-//             icon: Icon(Icons.home),
-//             label: 'Home',
-//           ),
-//           BottomNavigationBarItem(
-//             icon: Icon(Icons.shopping_cart),
-//             label: 'Cart',
-//           ),
-//           BottomNavigationBarItem(
-//             icon: Icon(Icons.person),
-//             label: 'Profile',
-//           ),
-//         ],
-//       ),
-//     );
-//   }
-
-//   Widget _buildCategoryItem(String title, String imageUrl) {
-//     return Container(
-//       margin: const EdgeInsets.only(right: 10),
-//       width: 80,
-//       child: Column(
-//         children: [
-//           CircleAvatar(
-//             backgroundImage: NetworkImage(imageUrl),
-//             radius: 30,
-//           ),
-//           const SizedBox(height: 5),
-//           Text(
-//             title,
-//             style: const TextStyle(fontSize: 14),
-//             textAlign: TextAlign.center,
-//           ),
-//         ],
-//       ),
-//     );
-//   }
-
-//   Widget _buildPopularItem(String title, String imageUrl, String price) {
-//     return Card(
-//       shape: RoundedRectangleBorder(
-//         borderRadius: BorderRadius.circular(10),
-//       ),
-//       child: Column(
-//         crossAxisAlignment: CrossAxisAlignment.start,
-//         children: [
-//           ClipRRect(
-//             borderRadius: const BorderRadius.only(
-//               topLeft: Radius.circular(10),
-//               topRight: Radius.circular(10),
-//             ),
-//             child: Image.network(
-//               imageUrl,
-//               height: 100,
-//               width: double.infinity,
-//               fit: BoxFit.cover,
-//             ),
-//           ),
-//           Padding(
-//             padding: const EdgeInsets.all(8.0),
-//             child: Text(
-//               title,
-//               style: const TextStyle(
-//                 fontSize: 16,
-//                 fontWeight: FontWeight.bold,
-//               ),
-//             ),
-//           ),
-//           Padding(
-//             padding: const EdgeInsets.symmetric(horizontal: 8.0),
-//             child: Text(
-//               price,
-//               style: const TextStyle(
-//                 fontSize: 14,
-//                 color: Colors.red,
-//               ),
-//             ),
-//           ),
-//         ],
-//       ),
-//     );
-//   }
-// }
