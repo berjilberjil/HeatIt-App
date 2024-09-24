@@ -1,6 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'home.dart';
+import 'package:get/get.dart';
+import 'package:myapp/Screens/bottomnavbar.dart';
 
 class PasswordScreen extends StatelessWidget {
   const PasswordScreen({super.key});
@@ -158,12 +159,7 @@ class PasswordScreen extends StatelessWidget {
             const SizedBox(height: 20),
             GestureDetector(
               onTap: () {
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(
-                    builder: (context) => const HomeScreen(),
-                  ),
-                );
+                Get.to(const Bottomnavbar());
               },
               child: Container(
                 decoration: const BoxDecoration(

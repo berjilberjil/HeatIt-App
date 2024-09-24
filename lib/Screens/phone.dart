@@ -1,7 +1,8 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:intl_phone_field/intl_phone_field.dart';
-import 'login.dart' as login;
+import 'login.dart';
 
 class PhoneNumberScreen extends StatelessWidget {
   const PhoneNumberScreen({super.key});
@@ -118,12 +119,7 @@ class PhoneNumberScreen extends StatelessWidget {
             const SizedBox(height: 20),
             GestureDetector(
               onTap: () {
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(
-                    builder: (context) => const login.LoginScreen(),
-                  ),
-                );
+                Get.to(const LoginScreen());
               },
               child: Container(
                 decoration: const BoxDecoration(
@@ -207,11 +203,11 @@ class PhoneNumberScreen extends StatelessWidget {
                   ),
                   child: const CircleAvatar(
                     backgroundColor: Colors.white,
+                    radius: 20,
                     child: Icon(
                       Icons.more_horiz,
                       color: Color.fromARGB(255, 0, 0, 0),
                     ),
-                    radius: 20,
                   ),
                 ),
               ],

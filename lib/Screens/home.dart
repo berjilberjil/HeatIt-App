@@ -1,11 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-import 'package:myapp/Screens/bottomnavbar.dart';
 import 'package:myapp/Screens/phone.dart';
 import 'productdetail.dart';
 import 'myprofile.dart';
-import 'wallet.dart';
-import 'bottomnavbar.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});
@@ -15,33 +12,6 @@ class HomeScreen extends StatefulWidget {
 }
 
 class _HomeScreenState extends State<HomeScreen> {
-  int _selectedIndex = 0;
-  static const List<Widget> _widgetOptions = <Widget>[
-    HomeScreen(), // Replace with your actual home content widget
-    WalletScreen(),
-    MyProfileScreen(),
-  ];
-
-  void _onItemTapped(int index) {
-    setState(
-      () {
-        _selectedIndex = index;
-      },
-    );
-    if (index == 2) {
-      Navigator.push(
-        context,
-        MaterialPageRoute(builder: (context) => MyProfileScreen()),
-      );
-    }
-    if (index == 1) {
-      Navigator.push(
-        context,
-        MaterialPageRoute(builder: (context) => WalletScreen()),
-      );
-    }
-  }
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -632,24 +602,60 @@ class _HomeScreenState extends State<HomeScreen> {
               ),
             ),
           ),
+          ListView.builder(
+            itemCount: 5,
+            itemBuilder: (BuildContext context, int index) {
+              return Row(
+                mainAxisAlignment: MainAxisAlignment.start,
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Padding(
+                    padding: const EdgeInsets.only(left: 30),
+                    child: Container(
+                      height: 240,
+                      width: 190,
+                      decoration: const BoxDecoration(
+                        image: DecorationImage(
+                          image: AssetImage("assets/images/prawn.png"),
+                          fit: BoxFit.cover,
+                        ),
+                      ),
+                      child: Align(
+                        alignment: Alignment.bottomCenter,
+                        child: Container(
+                          height: 70,
+                          width: double.infinity,
+                          decoration: const BoxDecoration(
+                            color: Colors.white,
+                          ),
+                          child: const Padding(
+                            padding: EdgeInsets.all(8.0),
+                            child: Column(
+                              mainAxisAlignment: MainAxisAlignment.start,
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: [
+                                Text("4.1"),
+                                Text(
+                                  "Prawn",
+                                  style: TextStyle(
+                                    fontSize: 15,
+                                    fontWeight: FontWeight.bold,
+                                  ),
+                                ),
+                                Text("Avilable in 13 Restaurants")
+                              ],
+                            ),
+                          ),
+                        ),
+                      ),
+                    ),
+                  ),
+                ],
+              );
+            },
+          ),
         ],
       ),
-      bottomNavigationBar: const Bottomnavbar(
-        index: 0,
-      ),
-      // bottomNavigationBar: BottomNavigationBar(
-      //   type: BottomNavigationBarType.shifting,
-      //       items: const <BottomNavigationBarItem>[
-      //         BottomNavigationBarItem(icon: Icon(Icons.home), label: "Home",
-      //          ),
-      //         BottomNavigationBarItem(icon: Icon(Icons.wallet), label: "Wallet"),
-      //         BottomNavigationBarItem(icon: Icon(Icons.person), label: "Profile"),
-      //       ],
-      //       currentIndex: _selectedIndex,
-      //       selectedItemColor: Colors.red,
-      //       unselectedItemColor: Colors.green,
-      //       onTap: _onItemTapped,
-      //     ),
     );
   }
 }

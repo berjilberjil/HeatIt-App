@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:myapp/Screens/bottomnavbar.dart';
 
 class WalletScreen extends StatelessWidget {
   const WalletScreen({super.key});
@@ -100,7 +99,7 @@ class WalletScreen extends StatelessWidget {
           ),
         ),
       ),
-      bottomNavigationBar: const Bottomnavbar(index: 1,),
+      
     );
   }
 }

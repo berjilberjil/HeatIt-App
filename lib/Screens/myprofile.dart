@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'bottomnavbar.dart';
 
 class MyProfileScreen extends StatelessWidget {
   const MyProfileScreen({super.key});

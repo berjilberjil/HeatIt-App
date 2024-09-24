@@ -1,18 +1,19 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/widgets.dart';
 import 'package:myapp/Screens/home.dart';
 import 'package:myapp/Screens/myprofile.dart';
 import 'package:myapp/Screens/wallet.dart';
 
 class Bottomnavbar extends StatefulWidget {
-  final int index;
-  const Bottomnavbar({super.key, required this.index});
+  const Bottomnavbar({super.key});
 
   @override
   State<Bottomnavbar> createState() => _BottomnavbarState();
 }
 
 class _BottomnavbarState extends State<Bottomnavbar> {
-  int _selectedIndex = 0;
+  int ActiveIndex = 0;
+  PageController pageController = PageController();
 
   static const List<Widget> _widgetOPtions = <Widget>[
     HomeScreen(),
@@ -21,49 +22,49 @@ class _BottomnavbarState extends State<Bottomnavbar> {
   ];
   void _onItemTapped(int index) {
     setState(() {
-      _selectedIndex = index;
+      ActiveIndex = index;
     });
-    if (index == 0) {
-      Navigator.push(
-        context,
-        MaterialPageRoute(builder: (context) => const HomeScreen()),
-      );
-    }
-    if (index == 1) {
-      Navigator.push(
-        context,
-        MaterialPageRoute(builder: (context) => const WalletScreen()),
-      );
-    }
-    if (index == 2) {
-      Navigator.push(
-        context,
-        MaterialPageRoute(builder: (context) => const MyProfileScreen()),
-      );
-    }
   }
 
   @override
   Widget build(BuildContext context) {
-    return BottomNavigationBar(
-      items: const <BottomNavigationBarItem>[
-        BottomNavigationBarItem(
-          icon: Icon(Icons.home),
-          label: 'Home',
+    return Scaffold(
+      body: PageView(
+        controller: pageController,
+        children: _widgetOPtions,
+        onPageChanged: (int index) {
+          setState(() {
+            ActiveIndex = index;
+          });
+        },
+      ),
+      bottomNavigationBar: SizedBox(
+        height: 70,
+        child: BottomNavigationBar(
+          type: BottomNavigationBarType.fixed,
+          backgroundColor: Color.fromARGB(255, 228, 228, 228),
+          items: const <BottomNavigationBarItem>[
+            BottomNavigationBarItem(
+              icon: Icon(Icons.home),
+              label: 'Home',
+            ),
+            BottomNavigationBarItem(
+              icon: Icon(Icons.wallet),
+              label: 'Wallet',
+            ),
+            BottomNavigationBarItem(
+              icon: Icon(Icons.person),
+              label: 'Profile',
+            ),
+          ],
+          currentIndex: ActiveIndex,
+          selectedItemColor: Colors.red,
+          unselectedItemColor: Colors.green,
+          onTap: (ActiveIndex) {
+            pageController.jumpToPage(ActiveIndex);
+          },
         ),
-        BottomNavigationBarItem(
-          icon: Icon(Icons.wallet),
-          label: 'Wallet',
-        ),
-        BottomNavigationBarItem(
-          icon: Icon(Icons.person),
-          label: 'Profile',
-        ),
-      ],
-      currentIndex: _selectedIndex,
-      selectedItemColor: Colors.red,
-      unselectedItemColor: Colors.green,
-      onTap: _onItemTapped,
+      ),
     );
   }
 }
