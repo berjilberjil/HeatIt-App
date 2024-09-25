@@ -159,7 +159,9 @@ class PasswordScreen extends StatelessWidget {
             const SizedBox(height: 20),
             GestureDetector(
               onTap: () {
-                Get.to(const Bottomnavbar());
+                Get.offAll(const Bottomnavbar(),
+                    transition: Transition.fadeIn,
+                    duration: const Duration(milliseconds: 500));
               },
               child: Container(
                 decoration: const BoxDecoration(

@@ -119,7 +119,9 @@ class PhoneNumberScreen extends StatelessWidget {
             const SizedBox(height: 20),
             GestureDetector(
               onTap: () {
-                Get.to(const LoginScreen());
+                Get.to(const LoginScreen(),
+                    transition: Transition.fade,
+                    duration: const Duration(milliseconds: 500));
               },
               child: Container(
                 decoration: const BoxDecoration(

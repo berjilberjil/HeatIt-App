@@ -12,7 +12,9 @@ class _SplashScreenState extends State<SplashScreen> {
   void initState() {
     super.initState();
     Future.delayed(const Duration(seconds: 3), () {
-      Get.to(const PhoneNumberScreen());
+      Get.to(const PhoneNumberScreen(),
+          transition: Transition.fadeIn,
+          duration: const Duration(milliseconds: 500));
     });
   }
 

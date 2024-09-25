@@ -162,7 +162,9 @@ class LoginScreen extends StatelessWidget {
             const SizedBox(height: 20),
             GestureDetector(
               onTap: () {
-                Get.to(const PasswordScreen());
+                Get.to(const PasswordScreen(),
+                    transition: Transition.fadeIn,
+                    duration: const Duration(milliseconds: 500));
               },
               child: Container(
                 decoration: const BoxDecoration(
