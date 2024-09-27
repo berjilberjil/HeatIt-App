@@ -1,12 +1,10 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:intl_phone_field/intl_phone_field.dart';
-import 'package:myapp/Screens/otpscreen.dart';
 import 'login.dart';
 
-class PhoneNumberScreen extends StatelessWidget {
-  const PhoneNumberScreen({super.key});
+class OTPScreen extends StatelessWidget {
+  const OTPScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -100,27 +98,18 @@ class PhoneNumberScreen extends StatelessWidget {
             const SizedBox(height: 30),
             Padding(
               padding: const EdgeInsets.symmetric(horizontal: 35),
-              child: SizedBox(
-                height: 70,
-                child: IntlPhoneField(
-                  decoration: const InputDecoration(
-                    labelText: 'Phone Number',
-                    border: OutlineInputBorder(
-                      borderRadius: BorderRadius.all(Radius.circular(15)),
-                    ),
-                    hintText: 'Enter phone number',
-                  ),
-                  initialCountryCode: 'IN',
-                  onChanged: (phone) {
-                    print(phone.completeNumber);
-                  },
-                ),
-              ),
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                crossAxisAlignment: CrossAxisAlignment.center,
+                children: [
+                  Text("data")
+                ],
+              )
             ),
             const SizedBox(height: 20),
             GestureDetector(
               onTap: () {
-                Get.to(const OTPScreen(),
+                Get.to(const LoginScreen(),
                     transition: Transition.fade,
                     duration: const Duration(milliseconds: 500));
               },
